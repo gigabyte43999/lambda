@@ -13,6 +13,8 @@ public class MainClass {
 
         Optional<Person> optionalString = getPerson();
 
+        ClassRoom classRoom = optionalString.flatMap(Person::getClassRoom).orElse(new ClassRoom("Chan"));
+
         Optional<String> s = optionalString.flatMap(Person::getClassRoom).map(ClassRoom::getName);
 
         s.ifPresent(System.out::println);
@@ -34,7 +36,7 @@ public class MainClass {
 
         Person person = new Person();
 
-        person.setClassRoom(Optional.ofNullable(new ClassRoom("Chan")));
+        person.setClassRoom(Optional.ofNullable(new ClassRoom("Chan2")));
 
         return Optional.ofNullable(person);
     }
